@@ -77,8 +77,6 @@ df5.head()
 df5.location = df5.location.apply(lambda x : x.strip())
 locations_stats = df5.groupby('location')['location'].agg('count').sort_values(ascending = False)
 
-# Plot bar graph to show different types of flat that are present in 
-#specific location.
 def show_graph(answer):
     data = df5[df5["location"]== answer]
     print( data.value_counts("bhk").size)
