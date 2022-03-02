@@ -42,13 +42,12 @@ def convert_sqft_to_num(x):
 df4['total_sqft'] = df4['total_sqft'].apply(convert_sqft_to_num)
 
 
-df1.groupby('area_type')['area_type'].agg('count')
 def locations_wise_flats():
 
-    area = df1.value_counts('size').index.tolist()
-    max_flat = df1.value_counts('size').index[0]
-    min_flat = df1.value_counts('size').index[-1]
-    count= df1.value_counts('size').tolist()
+    area = df4.value_counts('size').index.tolist()
+    max_flat = df4.value_counts('size').index[0]
+    min_flat = df4.value_counts('size').index[-1]
+    count= df4.value_counts('size').tolist()
     plt.bar(area, count, color ='green', width = .2)
  
     plt.xlabel("Types of Flats")
@@ -78,32 +77,33 @@ df5.head()
 df5.location = df5.location.apply(lambda x : x.strip())
 locations_stats = df5.groupby('location')['location'].agg('count').sort_values(ascending = False)
 
-
+# Plot bar graph to show different types of flat that are present in 
+#specific location.
 def show_graph(answer):
-    whitefield_data = df5[df5["location"]== answer]
-    print( whitefield_data.value_counts("bhk").size)
-    print(whitefield_data.value_counts("bhk"))
+    data = df5[df5["location"]== answer]
+    print( data.value_counts("bhk").size)
+    print(data.value_counts("bhk"))
     lis= []
     lis_data = []
-    if whitefield_data.value_counts("bhk").size >= 1:
-        home__1_whitefield_ind = whitefield_data.value_counts("bhk").index[0]
-        home__1_whitefield = whitefield_data.value_counts("bhk").values[0]
-        lis.append(str(home__1_whitefield_ind) + " bhk")
-        lis_data.append(home__1_whitefield)
+    if data.value_counts("bhk").size >= 1:
+        home__1 = data.value_counts("bhk").index[0]
+        home__1_data = data.value_counts("bhk").values[0]
+        lis.append(str(home__1) + " bhk")
+        lis_data.append(home__1_data)
       
     
-    if whitefield_data.value_counts("bhk").size >= 2:
-        home__1_whitefield_ind = whitefield_data.value_counts("bhk").index[1]
-        home__1_whitefield = whitefield_data.value_counts("bhk").values[1]
-        lis.append(str(home__1_whitefield_ind) + " bhk")
-        lis_data.append(home__1_whitefield)
+    if data.value_counts("bhk").size >= 2:
+        home__1 = data.value_counts("bhk").index[1]
+        home__1_data = data.value_counts("bhk").values[1]
+        lis.append(str(home__1) + " bhk")
+        lis_data.append(home__1_data)
       
     
-    if whitefield_data.value_counts("bhk").size >= 3:
-        home__1_whitefield_ind = whitefield_data.value_counts("bhk").index[2]
-        home__1_whitefield = whitefield_data.value_counts("bhk").values[2]
-        lis.append(str(home__1_whitefield_ind) + " bhk")
-        lis_data.append(home__1_whitefield)
+    if data.value_counts("bhk").size >= 3:
+        home__1 = data.value_counts("bhk").index[2]
+        home__1_data = data.value_counts("bhk").values[2]
+        lis.append(str(home__1) + " bhk")
+        lis_data.append(home__1_data)
     
 
     
@@ -121,16 +121,6 @@ if checkIt == "yes":
     show_graph(answer)
 else:
     print("Ok, Thanks for visiting here!")
-    
-answer = input("Do you want to show the graph of different size of homes that are available in Whitefield: ")
-
-if answer == "yes":
-    show_graph()
-else:
-    print("Ok, Thanks for visiting here!")
-    
-
-       
 
 value = int(input('enter the size of flat to know the price :'))
 df5 = df5.dropna()
