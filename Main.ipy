@@ -55,7 +55,7 @@ def locations_wise_flats():
     plt.title("Different types of flats that available in market for purchase")
     plt.show()
     print("here are my analysis of the data")
-    print("Maxium number of flats that are available :", max_flat )
+    print("Maximum number of flats that are available :", max_flat )
     print("Minimum number of flats that are available :", min_flat)
 
 answer = input("Do you want to show the graph of homes in different areas :")
@@ -65,7 +65,7 @@ if answer == "yes":
     print("Graph shows that maximum numbers of flats that are available in city is in range of 2-BHK to 5-Bhk")
     
 else:
-    print("Ok, Thanks for visiting here!")
+    print("Okay , Thanks!")
 
 
 df5 = df4.copy()
@@ -110,7 +110,7 @@ def show_graph(answer):
     plt.xlabel('xAxis name')
     plt.ylabel('yAxis name')
     plt.show()
-    print("This is my analysis of different sizes of homes that are available in Whitefield.")
+    print("This is my analysis of different sizes of homes that are available in different locations.")
     
 checkIt = input("Do you want to show the graph of different size of homes that are available in different locations: ")
 answer = input("Enter the loation name for which you want to see the graph for flats : ")
@@ -118,7 +118,7 @@ answer = input("Enter the loation name for which you want to see the graph for f
 if checkIt == "yes":
     show_graph(answer)
 else:
-    print("Ok, Thanks for visiting here!")
+    print("Okay, Thanks!")
 
 value = int(input('enter the size of flat to know the price :'))
 df5 = df5.dropna()
@@ -127,16 +127,16 @@ if value == 3:
     df5 = df5[(df5["location"]== "Whitefield") & (df5['bhk'] == 3)]
     df5["price_per_sqft"] = pd.to_numeric(df5["price_per_sqft"])
     mean_3 = df5["price_per_sqft"].mean()
-    print('Average price of 3 BHK flat that are available is :',mean_3)
+    print('Average price of 3 BHK flat that are available is Whitefield:',mean_3)
 elif value == 2:
     df5 = df5[(df5["location"]== "Whitefield") & (df5['bhk'] == 2)]
     df5["price_per_sqft"] = pd.to_numeric(df5["price_per_sqft"])
     mean_2 = df5["price_per_sqft"].mean()
-    print('Average price of 2 BHK flat that are available is :',mean_2)
+    print('Average price of 2 BHK flat that are available is Whitefield:',mean_2)
 elif value == 4:
     df5 = df5.loc[(df5["location"]== "Whitefield") & (df5['bhk'] == 4)]
     df5["price_per_sqft"] = pd.to_numeric(df5["price_per_sqft"])
     mean_4 = df5["price_per_sqft"].mean()
-    print('Average price of 4 BHK flat that are available is :',mean_4)
+    print('Average price of 4 BHK flat that are available is in Whitefield:',mean_4)
 else:
-    print("okay! Thanks")
+    print("okay, Thanks for visiting here!")
